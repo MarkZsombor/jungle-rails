@@ -30,12 +30,8 @@
 
     <%= form_for([@product, @review]) do |f| %>
       <div class="field">
-        <%= f.label :rating %><br>
-        <%= f.text_field :rating %>
-      </div>
-      <div class="field">
-        <%= f.label :description %><br>
-        <%= f.text_field :description %>
+        <%= f.select :rating, [['5', 5], ['4', 4], ['3', 3], ['2', 2], ['1', 1]] %>
+        <%= f.text_area :description %>
       </div>
       <div class="actions">
         <%= f.submit %>
@@ -53,7 +49,7 @@
           </tr>
         </thead>
         <tbody>
-      <% @product.reviews.each do |review| %>
+      <% @product.reviews.reverse_each do |review| %>
         <%= render 'review', review: review %>
       <% end %>
         </tbody>
