@@ -26,16 +26,18 @@
       </div>
     </div>
 
-    <h2>Please Rate this Product!</h2>
+    <% if current_user %>
+      <h2>Please Rate this Product!</h2>
 
-    <%= form_for([@product, @review]) do |f| %>
-      <div class="field">
-        <%= f.select :rating, [['5', 5], ['4', 4], ['3', 3], ['2', 2], ['1', 1]] %>
-        <%= f.text_area :description %>
-      </div>
-      <div class="actions">
-        <%= f.submit %>
-      </div>
+      <%= form_for([@product, @review]) do |f| %>
+        <div class="field">
+          <%= f.select :rating, [['5', 5], ['4', 4], ['3', 3], ['2', 2], ['1', 1]] %>
+          <%= f.text_area :description %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      <% end %>
     <% end %>
 
     <div class="product-reviews">
