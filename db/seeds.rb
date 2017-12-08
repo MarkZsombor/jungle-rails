@@ -132,5 +132,34 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## Creating
+
+puts "Re-creating Reviews ..."
+
+Review.destroy_all
+
+p1 = Product.find(1)
+
+p1.reviews.create!({
+  product_id: 1,
+  user_id: 1,
+  description: Faker::Hipster.paragraph(4),
+  rating: 4
+})
+
+p1.reviews.create!({
+  product_id: 1,
+  user_id: 2,
+  description: Faker::Hipster.paragraph(4),
+  rating: 5
+})
+
+p1.reviews.create!({
+  product_id: 1,
+  user_id: 3,
+  rating: 5
+})
+
+
 
 puts "DONE!"

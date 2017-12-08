@@ -26,6 +26,23 @@
       </div>
     </div>
 
+    <div class="product-reviews">
+      <h2>Reviews</h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Rating</th>
+            <th>Review</th>
+            <th>User</th>
+          </tr>
+        </thead>
+        <tbody>
+      <% @product.reviews.each do |review| %>
+        <%= render 'review', review: review %>
+      <% end %>
+        </tbody>
+      </table>
+    </div>
   </article>
 
 </section>
