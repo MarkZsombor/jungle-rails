@@ -26,6 +26,22 @@
       </div>
     </div>
 
+    <h2>Please Rate this Product!</h2>
+
+    <%= form_for([@product, @review]) do |f| %>
+      <div class="field">
+        <%= f.label :rating %><br>
+        <%= f.text_field :rating %>
+      </div>
+      <div class="field">
+        <%= f.label :description %><br>
+        <%= f.text_field :description %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+
     <div class="product-reviews">
       <h2>Reviews</h2>
       <table class="table table-bordered">
