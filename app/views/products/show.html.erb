@@ -29,34 +29,26 @@
 
     <% if current_user %>
       <h2>Please Rate this Product!</h2>
-
-      <%= form_for([@product, @review]) do |f| %>
-        <div class="field">
-          <%= f.select :rating, [['5', 5], ['4', 4], ['3', 3], ['2', 2], ['1', 1]] %>
-          <%= f.text_area :description %>
-        </div>
-        <div class="actions">
-          <%= f.submit %>
-        </div>
-      <% end %>
+      <div class="review-form">
+        <%= form_for([@product, @review]) do |f| %>
+          <div class="field">
+            <%= f.select :rating, [['5', 5], ['4', 4], ['3', 3], ['2', 2], ['1', 1]] %>
+            <%= f.text_area :description %>
+          </div>
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
 
-    <div class="product-reviews">
+    <div class="col-sm-8">
       <h2>Reviews</h2>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Rating</th>
-            <th>Review</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-      <% @product.reviews.reverse_each do |review| %>
-        <%= render 'review', review: review %>
-      <% end %>
-        </tbody>
-      </table>
+      <dl class="dl-horizontal">
+        <% @product.reviews.reverse_each do |review| %>
+          <%= render 'review', review: review %>
+        <% end %>
+      </dl>
     </div>
   </article>
 
