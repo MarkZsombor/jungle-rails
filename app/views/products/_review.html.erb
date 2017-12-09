@@ -1,6 +1,7 @@
-      <tr>
-        <td><%= review.rating %></td>
-        <td><%= review.description %></td>
-        <td><%= review.user_id %></td>
-      </tr>
-
+<tr>
+  <td><%= review.rating %></td>
+  <td><%= review.description %></td>
+  <td><% if current_user.id == review.user_id.to_i %>
+    <%= link_to 'Delete', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %></td>
+</tr>

@@ -4,6 +4,7 @@
     <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
   </header>
 
+  <h1 class="notice"><%= flash[:notice] %></h1>
   <article class="product-detail">
 
     <div class="row">
@@ -47,7 +48,7 @@
           <tr>
             <th>Rating</th>
             <th>Review</th>
-            <th>User</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
