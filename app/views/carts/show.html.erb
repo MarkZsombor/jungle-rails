@@ -4,6 +4,11 @@
     <h1>My Cart</h1>
   </header>
 
+  <% if cart.length == 0 %>
+    <h4 class="navbar-brand">Your Cart is Empty, please add some items you'd like to buy</h4>
+    <a class="navbar-brand" href="/">Return to Jungle!</a>
+  <% else %>
+
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -49,5 +54,7 @@
       <% end %>
     </div>
   </div>
+
+  <% end %>
 
 </section>
