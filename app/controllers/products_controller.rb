@@ -10,11 +10,4 @@ class ProductsController < ApplicationController
     @review = Review.new
     @user = User.new
   end
-
-  private
-
-  def review_average
-
-  end
-
 end
