@@ -110,4 +110,34 @@ RSpec.describe User, type: :model do
       expect(user.errors.full_messages).to include("Password is too short (minimum is 8 characters)")
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    it 'should return a valid user if login is valid' do
+      user = User.create(
+        first_name: 'shirt',
+        last_name: 'tony',
+        email: 'me@me',
+        password: 'bobbobbob',
+        password_confirmation: 'bobbobbob')
+      expect(user.authenticate_with_credentials('me@me', 'bobbobbob')).to eq(user)
+    end
+    it 'should not authenticate if login is not valid' do
+      user = User.create(
+        first_name: 'shirt',
+        last_name: 'tony',
+        email: 'me@me',
+        password: 'bobbobbob',
+        password_confirmation: 'bobbobbob')
+      expect(user.authenticate_with_credentials('me@me', 'babbobbob')).to_not eq(user)
+    end
+    it 'should return nil if login is not valid' do
+      user = User.create(
+        first_name: 'shirt',
+        last_name: 'tony',
+        email: 'me@me',
+        password: 'bobbobbob',
+        password_confirmation: 'bobbobbob')
+      expect(user.authenticate_with_credentials('me@me', 'babbobbob')).to eq(nil)
+    end
+  end
 end
