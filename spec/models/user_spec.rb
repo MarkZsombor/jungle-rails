@@ -119,7 +119,8 @@ RSpec.describe User, type: :model do
         email: 'me@me',
         password: 'bobbobbob',
         password_confirmation: 'bobbobbob')
-      expect(user.authenticate_with_credentials('me@me', 'bobbobbob')).to eq(user)
+      auth_user = User.authenticate_with_credentials('me@me', 'bobbobbob')
+      expect(auth_user).to eq(user)
     end
     it 'should not authenticate if login is not valid' do
       user = User.create(
@@ -128,16 +129,68 @@ RSpec.describe User, type: :model do
         email: 'me@me',
         password: 'bobbobbob',
         password_confirmation: 'bobbobbob')
-      expect(user.authenticate_with_credentials('me@me', 'babbobbob')).to_not eq(user)
+      auth_user = User.authenticate_with_credentials('me@me', 'babbobbob')
+      expect(auth_user).to_not eq(user)
     end
-    it 'should return nil if login is not valid' do
+    it 'should return nil if password is not valid' do
       user = User.create(
         first_name: 'shirt',
         last_name: 'tony',
         email: 'me@me',
         password: 'bobbobbob',
         password_confirmation: 'bobbobbob')
-      expect(user.authenticate_with_credentials('me@me', 'babbobbob')).to eq(nil)
+      auth_user = User.authenticate_with_credentials('me@me', 'babbobbob')
+      expect(auth_user).to be_nil
+    end
+    it 'should return nil if email is not valid' do
+      user = User.create(
+        first_name: 'shirt',
+        last_name: 'tony',
+        email: 'me@me',
+        password: 'bobbobbob',
+        password_confirmation: 'bobbobbob')
+      auth_user = User.authenticate_with_credentials('memmm@me', 'bobbobbob')
+      expect(auth_user).to be_nil
+    end
+    it 'should return a valid user if login is valid even if the email has spaces' do
+      user = User.create(
+        first_name: 'shirt',
+        last_name: 'tony',
+        email: 'me@me',
+        password: 'bobbobbob',
+        password_confirmation: 'bobbobbob')
+      auth_user = User.authenticate_with_credentials('me@me   ', 'bobbobbob')
+      expect(auth_user).to eq(user)
+    end
+    it 'should return a valid user if login is valid even if the email has spaces' do
+      user = User.create(
+        first_name: 'shirt',
+        last_name: 'tony',
+        email: 'me@me',
+        password: 'bobbobbob',
+        password_confirmation: 'bobbobbob')
+      auth_user = User.authenticate_with_credentials('   me@me', 'bobbobbob')
+      expect(auth_user).to eq(user)
+    end
+    it 'should return a valid user if login is valid even if the email has wrong case' do
+      user = User.create(
+        first_name: 'shirt',
+        last_name: 'tony',
+        email: 'me@me',
+        password: 'bobbobbob',
+        password_confirmation: 'bobbobbob')
+      auth_user = User.authenticate_with_credentials('me@ME', 'bobbobbob')
+      expect(auth_user).to eq(user)
+    end
+    it 'should return a valid user if login is valid even if the email has wrong case' do
+      user = User.create(
+        first_name: 'shirt',
+        last_name: 'tony',
+        email: 'me@ME',
+        password: 'bobbobbob',
+        password_confirmation: 'bobbobbob')
+      auth_user = User.authenticate_with_credentials('me@me', 'bobbobbob')
+      expect(auth_user).to eq(user)
     end
   end
 end
