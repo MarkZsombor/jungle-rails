@@ -8,10 +8,8 @@
 </dt>
 <dd>
   <%= review.description %>
-  <% if current_user %>
-    <% if current_user.id == review.user_id.to_i %>
-      <%= link_to 'Delete', review, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
+  <% if current_user && current_user.id == review.user_id.to_i %>
+    <%= link_to 'Delete', review, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 </dd>
 

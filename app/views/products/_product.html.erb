@@ -12,7 +12,7 @@
     <% @ratings = Review.where(product_id: product.id).pluck(:rating) %>
     <% if @ratings.size != 0 %>
       <% @average = @ratings.sum.to_f/@ratings.size %>
-      Average Rating: <%= @average %>
+      Average Rating: <%= @average.round(2) %>
     <% else %>
       No Reviews Yet
     <% end %>
