@@ -15,7 +15,7 @@ RSpec.feature "User can login", type: :feature, js: true do
 
   scenario "A user can fill out the login form and login" do
     # ACT
-    visit '/login'
+    visit login_path
 
     within 'form' do
       fill_in id:'email', with: @user.email
