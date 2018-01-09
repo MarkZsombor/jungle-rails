@@ -10,14 +10,6 @@ Logged-in users can review products and leave both a 1-5 rating and a written re
 
 An authenticated admin can create new categories, create new product listings and delete existing product listings.
 
-## Final Product
-
-!["Screenshot of the main page"](https://github.com/MarkZsombor/jungle-rails/blob/master/docs/jungle_main.png)
-!["Screenshot of the register page"](https://github.com/MarkZsombor/jungle-rails/blob/master/docs/jungle_singup.png)
-!["Screenshot of a product page"](https://github.com/MarkZsombor/jungle-rails/blob/master/docs/jungle_review.png)
-!["Screenshot of the cart"](https://github.com/MarkZsombor/jungle-rails/blob/master/docs/jungle_cart.png)
-!["Screenshot of the order page"](https://github.com/MarkZsombor/jungle-rails/blob/master/docs/jungle_order.png)
-
 ## Getting Started
 
 1. Fork & Clone
@@ -29,6 +21,15 @@ An authenticated admin can create new categories, create new product listings an
 7. Sign up for a Stripe account
 8. Put Stripe (test) keys into appropriate .env vars
 9. Run `bin/rails s -b 0.0.0.0` to start the server
+10. Go to http://localhost:3000/ in your browser.
+
+## Final Product
+
+!["Screenshot of the main page"](https://github.com/MarkZsombor/jungle-rails/blob/master/docs/jungle_main.png)
+!["Screenshot of the register page"](https://github.com/MarkZsombor/jungle-rails/blob/master/docs/jungle_singup.png)
+!["Screenshot of a product page"](https://github.com/MarkZsombor/jungle-rails/blob/master/docs/jungle_review.png)
+!["Screenshot of the cart"](https://github.com/MarkZsombor/jungle-rails/blob/master/docs/jungle_cart.png)
+!["Screenshot of the order page"](https://github.com/MarkZsombor/jungle-rails/blob/master/docs/jungle_order.png)
 
 ## Stripe Testing
 
